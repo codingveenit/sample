@@ -23,8 +23,8 @@ jobs:
 
     - name: Install R packages
       run: |
-        R -e "install.packages(c('tidyverse', 'readr', 'dplyr', 'stats'), repos='https://cloud.r-project.org/')"
+        Rscript install_packages.R
 
     - name: Run R script
       run: |
-        Rscript new.R  # Replace 'script.R' with the name of your R script
+        Rscript new.R  # Ensure this matches your script name
