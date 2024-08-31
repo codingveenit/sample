@@ -1,0 +1,30 @@
+name: R CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: '4.2'  # Specify the R version you want to use
+
+    - name: Install R packages
+      run: |
+        install.packages(c('tidyverse', 'readr', 'dplyr', 'stats'))  # Add any additional packages your script needs
+
+    - name: Run R script
+      run: |
+        Rscript new.R  # Replace 'script.R' with the name of your R script
